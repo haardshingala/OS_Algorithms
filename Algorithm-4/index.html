@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRU Page Replacement</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="heading">Least Recently Used Page Replacement Simulation</h2>
+        <div class="input-section">
+            <label for="memoryLength">Memory Length:</label>
+            <input type="number" id="memoryLength">
+        </div>
+        <div class="input-section">
+            <label for="referenceString">Reference String (comma-separated):</label>
+            <input type="text" id="referenceString">
+        </div>
+        <button class="simulate-button" onclick="simulateLRU()">Simulate</button>
+        <div id="output" class="output-section"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
