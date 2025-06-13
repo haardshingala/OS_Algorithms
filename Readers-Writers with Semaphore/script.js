@@ -3,15 +3,14 @@ class Semaphore {
       this.value = value;
       this.queue = [];
     }
-    wait() {
-      if (this.value > 0) {
-        this.value--;
-      } else {
-        return new Promise((resolve) => {
-          this.queue.push(resolve);
-        });
-      }
-    }
+   async wait() {
+  if (this.value > 0) {
+    this.value--;
+    return;
+  }
+  return new Promise((resolve) => this.queue.push(resolve));
+}
+
   
     signal() {
       if (this.queue.length > 0) {
@@ -96,10 +95,11 @@ class Semaphore {
   
   function updateTable() {
     document.getElementById("mutexValue").innerText = mutex.value;
-    document.getElementById("wrtValue").innerText = wrt.value;
+    document.getElementById("wrtValue").innerText = wrt.value === 0 ? "Locked (0)" : "Available (1)";
     document.getElementById("readerCount").innerText = readerCount;
-    document.getElementById("readerStatus").innerText = readerCount > 0 ? "Yes" : "No";
-    document.getElementById("writerStatus").innerText = writerActive ? "Yes" : "No";
+    document.getElementById("readerStatus").innerText = readerCount > 0 ? "Active" : "Idle";
+    document.getElementById("writerStatus").innerText = writerActive ? "Active" : "Idle";
+
   }
   
   
